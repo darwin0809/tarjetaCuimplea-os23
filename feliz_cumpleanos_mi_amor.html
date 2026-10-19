@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz cumpleaños, mi amor 💗</title>
+  <style>
+    :root {
+      --rose: #c94f75;
+      --rose-dark: #8f3153;
+      --pink: #fff0f4;
+      --cream: #fffaf6;
+      --ink: #573644;
+      --gold: #e9b96e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #fff8f5 0%, #ffeaf1 48%, #fff5eb 100%);
+      overflow-x: hidden;
+    }
+
+    .floating-hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .floating-hearts span {
+      position: absolute;
+      bottom: -50px;
+      opacity: .25;
+      color: #e78aa5;
+      animation: floatUp linear infinite;
+      font-size: 20px;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: .28;
+      }
+
+      to {
+        transform: translateY(-115vh) rotate(35deg);
+        opacity: 0;
+      }
+    }
+
+    header,
+    main,
+    footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      min-height: 90vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 70px 22px 60px;
+      position: relative;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "♡";
+      position: absolute;
+      color: #e6a0b4;
+      opacity: .45;
+      font-size: clamp(80px, 15vw, 180px);
+    }
+
+    .hero::before {
+      left: 5%;
+      top: 12%;
+      transform: rotate(-18deg);
+    }
+
+    .hero::after {
+      right: 5%;
+      bottom: 10%;
+      transform: rotate(16deg);
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-size: .78rem;
+      color: var(--rose);
+      font-weight: 700;
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--rose-dark);
+      font-size: clamp(3rem, 8vw, 6.3rem);
+      line-height: .98;
+      margin: 22px 0;
+      font-weight: 500;
+      text-shadow: 0 5px 24px #d88ca526;
+    }
+
+    .hero p {
+      font-size: clamp(1.05rem, 2.3vw, 1.35rem);
+      line-height: 1.8;
+      max-width: 650px;
+      margin: 0 auto 28px;
+    }
+
+    .heart {
+      color: var(--rose);
+    }
+
+    .cta {
+      display: inline-block;
+      background: var(--rose);
+      color: white;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 14px 24px;
+      font-weight: 700;
+      box-shadow: 0 9px 22px #c94f7533;
+      transition: transform .2s, background .2s;
+    }
+
+    .cta:hover {
+      transform: translateY(-3px);
+      background: var(--rose-dark);
+    }
+
+    .section {
+      max-width: 1050px;
+      padding: 70px 22px;
+      margin: auto;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    h2 {
+      font: 500 clamp(2rem, 5vw, 3.3rem)/1.15 Georgia, serif;
+      color: var(--rose-dark);
+      margin: 0 0 12px;
+    }
+
+    .section-heading p {
+      max-width: 650px;
+      line-height: 1.7;
+      margin: auto;
+      color: #805d6a;
+    }
+
+    .letter-card {
+      background: #ffffffc9;
+      border: 1px solid #f3d3dd;
+      border-radius: 28px;
+      padding: clamp(25px, 5vw, 55px);
+      box-shadow: 0 20px 60px #7f36500d;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .letter-card::after {
+      content: "♡";
+      position: absolute;
+      right: 20px;
+      bottom: -42px;
+      font-size: 150px;
+      color: #f9e0e7;
+    }
+
+    .letter-card p {
+      position: relative;
+      z-index: 1;
+      line-height: 1.95;
+      font-size: 1.06rem;
+      margin: 0 0 18px;
+    }
+
+    .signature {
+      color: var(--rose-dark);
+      font: italic 1.6rem Georgia, serif;
+      margin-top: 28px !important;
+    }
+
+    .candle-panel {
+      background: #fffaf8d9;
+      border: 1px solid #f3d7df;
+      border-radius: 28px;
+      padding: clamp(22px, 4vw, 38px);
+      box-shadow: 0 18px 50px #7f36500b;
+    }
+
+    .candle-instructions {
+      text-align: center;
+      margin: 0 auto 26px;
+      line-height: 1.7;
+    }
+
+    .candles {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 22px 12px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .candle {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      color: var(--ink);
+      border-radius: 15px;
+      padding: 8px 2px;
+      transition: transform .2s, background .2s;
+    }
+
+    .candle:hover {
+      transform: translateY(-4px);
+      background: #fff0f4;
+    }
+
+    .candle:focus-visible {
+      outline: 3px solid var(--rose);
+      outline-offset: 3px;
+    }
+
+    .candle-art {
+      height: 72px;
+      width: 34px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    .wax {
+      width: 27px;
+      height: 47px;
+      border-radius: 7px 7px 4px 4px;
+      position: relative;
+      background: repeating-linear-gradient(135deg, #f6a9bd 0 7px, #fff0f3 7px 13px);
+      box-shadow: inset -4px 0 5px #b64e6b1c, 0 4px 7px #9e47651c;
+    }
+
+    .wax::before {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 9px;
+      background: #65424b;
+      top: -8px;
+      left: 13px;
+      border-radius: 2px;
+    }
+
+    .flame {
+      position: absolute;
+      top: 0px;
+      width: 15px;
+      height: 22px;
+      border-radius: 80% 15% 65% 50%;
+      transform: rotate(45deg);
+      transform-origin: center;
+      background: linear-gradient(135deg, #fff4b0 8%, #ffc45c 55%, #f58a49);
+      box-shadow: 0 0 13px #ffb54c99;
+      animation: flicker .8s infinite alternate;
+    }
+
+    @keyframes flicker {
+      from {
+        transform: rotate(42deg) scale(.95);
+      }
+
+      to {
+        transform: rotate(48deg) scale(1.06);
+      }
+    }
+
+    .candle.blown .flame {
+      display: none;
+    }
+
+    .candle.blown .wax {
+      background: repeating-linear-gradient(135deg, #d7b5bd 0 7px, #f2e1e5 7px 13px);
+    }
+
+    .candle.blown .wax::before {
+      background: #aaa;
+    }
+
+    .candle-number {
+      font-size: .8rem;
+      color: #9b7180;
+      font-weight: 700;
+    }
+
+    .message-box {
+      margin: 30px auto 0;
+      min-height: 95px;
+      max-width: 700px;
+      text-align: center;
+      background: #fff0f4;
+      border-radius: 18px;
+      padding: 20px;
+      border: 1px dashed #e6a0b4;
+      display: grid;
+      place-items: center;
+      line-height: 1.7;
+    }
+
+    .message-box strong {
+      color: var(--rose-dark);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .progress-wrap {
+      max-width: 500px;
+      margin: 22px auto 0;
+      text-align: center;
+      color: #8d6876;
+      font-size: .9rem;
+    }
+
+    .progress {
+      height: 8px;
+      background: #f2dce3;
+      border-radius: 99px;
+      overflow: hidden;
+      margin-top: 9px;
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #e78ba5, #c94f75);
+      transition: width .3s;
+    }
+
+    .memory-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .memory {
+      display: grid;
+      grid-template-columns: minmax(180px, .9fr) minmax(0, 1.1fr);
+      gap: 25px;
+      align-items: center;
+      padding: 18px;
+      background: #ffffffc9;
+      border: 1px solid #f3d3dd;
+      border-radius: 24px;
+      box-shadow: 0 12px 36px #7f36500a;
+    }
+
+    .memory:nth-child(even) {
+      grid-template-columns: minmax(0, 1.1fr) minmax(180px, .9fr);
+    }
+
+    .memory:nth-child(even) .memory-photo {
+      order: 2;
+    }
+
+    .memory-photo {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 17px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f9dbe4, #fff2e7);
+      display: grid;
+      place-items: center;
+      color: #a45e76;
+      text-align: center;
+      padding: 12px;
+      border: 1px dashed #e6a0b4;
+    }
+
+    .memory-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .memory-photo img:not([src]),
+    .memory-photo img[src=""] {
+      display: none;
+    }
+
+    .memory-copy {
+      padding: 10px 12px;
+    }
+
+    .memory-copy .number {
+      color: var(--rose);
+      letter-spacing: .15em;
+      font-size: .75rem;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    h3 {
+      font: 500 1.7rem Georgia, serif;
+      color: var(--rose-dark);
+      margin: 10px 0;
+    }
+
+    .memory-copy p {
+      line-height: 1.8;
+      margin: 0;
+      color: #755663;
+    }
+
+    .closing {
+      text-align: center;
+      padding: 65px 22px 85px;
+    }
+
+    .closing .big-heart {
+      font-size: 3rem;
+      color: var(--rose);
+      animation: heartbeat 1.5s infinite;
+      display: inline-block;
+    }
+
+    @keyframes heartbeat {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      15% {
+        transform: scale(1.13);
+      }
+
+      30% {
+        transform: scale(1);
+      }
+    }
+
+    .closing p {
+      max-width: 640px;
+      line-height: 1.8;
+      margin: 15px auto 25px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #a57c8a;
+      font-size: .85rem;
+    }
+
+    .confetti {
+      position: fixed;
+      top: -15px;
+      z-index: 10;
+      pointer-events: none;
+      animation: fall 2.8s linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .hero {
+        min-height: 80vh;
+      }
+
+      .candles {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px 6px;
+      }
+
+      .memory,
+      .memory:nth-child(even) {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .memory:nth-child(even) .memory-photo {
+        order: 0;
+      }
+
+      .memory-photo {
+        aspect-ratio: 16/10;
+      }
+
+      .memory-copy {
+        padding: 6px 5px 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="floating-hearts" aria-hidden="true">
+    <span style="left:7%;animation-duration:17s;animation-delay:-4s">♡</span>
+    <span style="left:19%;animation-duration:22s;animation-delay:-12s">♥</span>
+    <span style="left:37%;animation-duration:19s;animation-delay:-7s">♡</span>
+    <span style="left:59%;animation-duration:24s;animation-delay:-15s">♥</span>
+    <span style="left:76%;animation-duration:18s;animation-delay:-2s">♡</span>
+    <span style="left:91%;animation-duration:21s;animation-delay:-10s">♥</span>
+  </div>
+
+  <header class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">Un día especial para alguien increíble</div>
+      <h1>¡Feliz cumpleaños,<br>mi amor! <span class="heart">♡</span></h1>
+      <p>Hoy el mundo celebra que llegaste a él… y yo celebro la suerte tan bonita de tenerte en mi vida. Que tus 23
+        estén llenos de amor, sueños cumplidos y momentos que te hagan sonreír.</p>
+      <a class="cta" href="#carta">Tengo algo para ti ↓</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="carta">
+      <div class="section-heading">
+        <h2>Una cartita para ti</h2>
+        <p>Un pequeño recordatorio de lo mucho que significas para mí.</p>
+      </div>
+      <article class="letter-card">
+        <p>Mi vida hermosa:</p>
+        <p>Hoy cumples 23 años y quisiera poder regalarte el mundo entero, aunque sé que ni siquiera eso alcanzaría para
+          expresar todo lo que deseo para ti. Me hace feliz celebrar tu existencia, tu forma de ser, tus ocurrencias, tu
+          sonrisa y cada pequeño detalle que te hace ser tú.</p>
+        <p>Gracias por dejarme compartir contigo momentos bonitos, conversaciones, risas, abrazos y hasta esos días en
+          los que simplemente estar juntos hace que todo se sienta mejor. A tu lado he encontrado razones nuevas para
+          sonreír y recuerdos que guardo con muchísimo cariño.</p>
+        <p>Deseo que este nuevo año de vida te acerque a tus sueños, que nunca te falten motivos para sentirte orgullosa
+          de ti y que, incluso en los días difíciles, recuerdes lo valiosa, capaz y especial que eres. Ojalá la vida te
+          devuelva multiplicada toda la ternura que llevas dentro.</p>
+        <p>Quiero seguir acompañándote, celebrar tus logros, apoyarte cuando algo cueste y crear contigo muchísimos
+          recuerdos más. No necesito que cada día sea perfecto; me basta con que podamos seguir construyendo algo
+          bonito, con amor, paciencia, confianza y muchas risas.</p>
+        <p>Feliz cumpleaños, mi niña preciosa. Gracias por existir y por formar parte de mi vida. Hoy y siempre deseo
+          verte feliz, sentirte amada y recordarte que eres alguien muy importante para mí.</p>
+        <p class="signature">Te amo muchísimo. Feliz 23, mi amor. ♡</p>
+      </article>
+    </section>
+
+    <section class="section" id="velitas">
+      <div class="section-heading">
+        <h2>23 deseos para ti 🕯️</h2>
+        <p>Una velita por cada año de tu historia. Toca cada una para apagarla y descubrir un mensajito hecho con amor.
+        </p>
+      </div>
+      <div class="candle-panel">
+        <p class="candle-instructions">Cierra los ojos un momentico, pide un deseo y empieza a apagar tus velitas. ✨</p>
+        <div class="candles" id="candles" aria-label="23 velitas de cumpleaños"></div>
+        <div class="message-box" id="messageBox" aria-live="polite">
+          <div><strong>Un mensajito para ti ♡</strong>Apaga tu primera velita para descubrirlo.</div>
+        </div>
+        <div class="progress-wrap">
+          <span id="progressText">Has apagado 0 de 23 velitas</span>
+          <div class="progress"><span id="progressBar"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="recuerdos">
+      <div class="section-heading">
+        <h2>Tres pedacitos de nuestra historia</h2>
+        <p>Porque hay momentos que merecen quedarse cerquita del corazón. Cambia las fotos y los textos por recuerdos de
+          ustedes.</p>
+      </div>
+      <div class="memory-grid">
+        <article class="memory">
+          <div class="memory-photo"><img src="fotos\amorwbrec.png" alt="amorwbrec"
+              onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<span>📷<br>Coloca aquí foto1.jpg</span>')">
+          </div>
+          <div class="memory-copy">
+            <div class="number">Cuando nos conocimos</div>
+            <h3>Un momento que guardo</h3>
+            <p>Este recuerdo siempre me saca una sonrisa. Me encanta pensar en ese día y recordar lo bonito que es
+              compartir momentos contigo.</p>
+          </div>
+        </article>
+        <article class="memory">
+          <div class="memory-photo"><img src="fotos/deditos.jpeg" alt="Un momento especial juntos"
+              onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<span>📷<br>Coloca aquí foto2.jpg</span>')">
+          </div>
+          <div class="memory-copy">
+            <div class="number">Nuestros momentos</div>
+            <h3>De esas cosas loquitas</h3>
+            <p>Me encanta tu forma de ser: tus ocurrencias, tu manera de hacer especial lo cotidiano y esos detalles que
+              quizá parecen pequeños, pero para mí significan muchísimo.</p>
+          </div>
+        </article>
+        <article class="memory">
+          <div class="memory-photo"><img src="fotos/Felizcumpleaños.jpeg" alt="Otro recuerdo especial juntos"
+              onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<span>📷<br>Coloca aquí foto3.jpg</span>')">
+          </div>
+          <div class="memory-copy">
+            <div class="number">tu belleza</div>
+            <h3>SIN IGUAL</h3>
+            <p>Esta foto es de hace 1 año me hace recordar lo hermosa que eres, brillas tanto, que sobresales en cualquier lugar mi niña, te amooooo.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="big-heart">♥</div>
+      <h2>Mi deseo para ti</h2>
+      <p>Que tus 23 sean tan hermosos como la luz que llevas contigo. Que la vida te sorprenda bonito y que nunca
+        olvides cuánto mereces ser feliz. Y si me lo permites, quiero estar a tu lado para celebrar muchos cumpleaños
+        más.</p>
+      <div class="eyebrow">Con todo mi amor, hoy y siempre ♡</div>
+    </section>
+  </main>
+  <footer>Hecho con amor, especialmente para ti · Feliz cumpleaños, Te ama Darwin 🎂</footer>
+
+  <script>
+    const candleMessages = [
+      "Deseo que hoy recibas todo el amor bonito que mereces. ♡",
+      "Que nunca te falten motivos para sonreír, incluso en los días sencillos.",
+      "Que confíes siempre en lo increíble que eres y en todo lo que puedes lograr.",
+      "Ojalá cada sueño que guardas en el corazón encuentre su camino.",
+      "Que tengas salud, tranquilidad y muchos días llenos de paz.",
+      "Gracias por tu sonrisa, porque tiene una forma preciosa de alegrarme el día.",
+      "Deseo que nunca tengas que hacerte pequeña para que otros brillen.",
+      "Que siempre encuentres personas que te cuiden, te respeten y te quieran bonito.",
+      "Prometo celebrar tus logros y recordarte lo capaz que eres cuando lo necesites.",
+      "Que este nuevo año te regale aventuras que algún día contemos con una sonrisa.",
+      "Me encanta descubrir cada día algo nuevo que hace que te quiera aún más.",
+      "Deseo que te mires con el mismo cariño con el que yo veo tantas cosas bonitas en ti.",
+      "Que nunca se te apague esa chispa tan tuya que te hace especial.",
+      "Gracias por cada risa, cada charla y cada instante compartido.",
+      "Que los días difíciles pasen y te dejen más fuerte, acompañada y llena de esperanza.",
+      "Deseo que tengas tiempo para descansar, disfrutar y hacer las cosas que amas.",
+      "Que la vida te sorprenda con oportunidades tan bonitas como tus sueños.",
+      "Si pudiera pedir algo por nosotros, sería seguir construyendo recuerdos con amor y paciencia.",
+      "Que nunca te falten abrazos sinceros y palabras que te hagan sentir en casa.",
+      "Admiro mucho la persona que eres y todo lo que sigues aprendiendo y creciendo.",
+      "Deseo que este año te acerque a una versión de tu vida que te haga muy feliz.",
+      "Gracias por formar parte de mi historia; compartir la tuya es un regalo.",
+      "Y mi último deseo: que recuerdes hoy, mañana y siempre que te amo muchísimo. Feliz cumpleaños, mi amor. ♥"
+    ];
+    const candlesEl = document.getElementById("candles");
+    const messageBox = document.getElementById("messageBox");
+    const progressText = document.getElementById("progressText");
+    const progressBar = document.getElementById("progressBar");
+    let blownCount = 0;
+
+    candleMessages.forEach((message, index) => {
+      const button = document.createElement("button");
+      button.className = "candle";
+      button.type = "button";
+      button.setAttribute("aria-label", `Apagar velita ${index + 1}`);
+      button.innerHTML = `<span class="candle-art"><span class="flame"></span><span class="wax"></span></span><span class="candle-number">${String(index + 1).padStart(2, "0")}</span>`;
+      button.addEventListener("click", () => {
+        if (button.classList.contains("blown")) {
+          messageBox.innerHTML = `<div><strong>Velita ${index + 1} ♡</strong>${message}</div>`;
+          return;
+        }
+        button.classList.add("blown");
+        button.setAttribute("aria-label", `Velita ${index + 1} apagada. Volver a leer mensaje`);
+        blownCount++;
+        messageBox.innerHTML = `<div><strong>Velita ${index + 1} de 23 ✨</strong>${message}</div>`;
+        progressText.textContent = `Has apagado ${blownCount} de 23 velitas`;
+        progressBar.style.width = `${(blownCount / 23) * 100}%`;
+        makeConfetti(blownCount === 23 ? 65 : 12);
+        if (blownCount === 23) {
+          messageBox.innerHTML = `<div><strong>¡Pediste tus 23 deseos! 🎂💗</strong>Que todos encuentren la forma de hacerse realidad. Te mereces cosas hermosas, mi amor. ¡Feliz cumpleaños!</div>`;
+        }
+      });
+      candlesEl.appendChild(button);
+    });
+
+    function makeConfetti(amount) {
+      const symbols = ["♥", "♡", "✦", "✧", "💗"];
+      for (let i = 0; i < amount; i++) {
+        const bit = document.createElement("span");
+        bit.className = "confetti";
+        bit.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        bit.style.left = `${Math.random() * 100}vw`;
+        bit.style.color = ["#c94f75", "#e9b96e", "#e78ba5", "#b85f81"][Math.floor(Math.random() * 4)];
+        bit.style.fontSize = `${12 + Math.random() * 16}px`;
+        bit.style.animationDuration = `${1.7 + Math.random() * 1.7}s`;
+        document.body.appendChild(bit);
+        setTimeout(() => bit.remove(), 3600);
+      }
+    }
+  </script>
+</body>
+
+</html>
